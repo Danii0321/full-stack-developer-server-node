@@ -1,10 +1,19 @@
 import posts from "./tuits/tuits.js";
 let tuits = posts;
 
+// need to format this correctly
 const createTuit = (req, res) => {
  const newTuit = req.body;
+ newTuit.postedBy= {
+                                            "username": "Me"
+                                        };
  newTuit._id = (new Date()).getTime()+'';
  newTuit.likes = 0;
+  newTuit.stats= {
+                             "comments": 0,
+                             "retuits": 0,
+                             "likes": 0
+                         }
  tuits.push(newTuit);
  res.json(newTuit);
 }
