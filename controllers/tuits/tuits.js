@@ -7,6 +7,7 @@ export default
             "username": "ReactJS"
         },
         "liked": true,
+        "disliked": false,
         "verified": false,
         "handle": "ReactJS",
         "time": "2h",
@@ -20,7 +21,8 @@ export default
         "stats": {
             "comments": 123,
             "retuits": 234,
-            "likes": 345
+            "likes": 345,
+            "dislikes": 28
         }
     },
     {
@@ -30,6 +32,7 @@ export default
             "username": "SpaceX"
         },
         "liked": false,
+        "disliked": false,
         "verified": false,
         "handle": "spacex",
         "title": "",
@@ -44,7 +47,8 @@ export default
         "stats": {
             "comments": 123,
             "retuits": 234,
-            "likes": 345
+            "likes": 345,
+            "dislikes": 0
         }
     },
     {
@@ -54,6 +58,7 @@ export default
             "username": "Scott Manley"
         },
         "liked": true,
+        "disliked": true,
         "verified": true,
         "handle": "DJSnM",
         "postedOn": "2020-12-10",
@@ -66,7 +71,8 @@ export default
         "stats": {
             "comments": 123,
             "retuits": 234,
-            "likes": 345
+            "likes": 345,
+            "dislikes": 345
         }
     },
     {
@@ -76,6 +82,7 @@ export default
             "username": "jQuery"
         },
         "liked": false,
+        "disliked": true,
         "verified": false,
         "handle": "jQuery",
         "title": "",
@@ -87,7 +94,8 @@ export default
         "stats": {
             "comments": 123,
             "retuits": 234,
-            "likes": 345
+            "likes": 345,
+            "dislikes": 809,
         }
     },
     {
@@ -97,6 +105,7 @@ export default
             "username": "NodeJS"
         },
         "liked": true,
+        "disliked": false,
         "verified": true,
         "handle": "NodeJS",
         "title": "",
@@ -108,7 +117,8 @@ export default
         "stats": {
             "comments": 123,
             "retuits": 234,
-            "likes": 345
+            "likes": 345,
+            "dislikes": 0,
         }
     }
 ]
