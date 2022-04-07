@@ -7,4 +7,4 @@ app.use(express.json());
 app.use(cors());
 // helloController(app);
 userController(app);
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
