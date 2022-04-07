@@ -19,7 +19,8 @@ const createTuit = (req, res) => {
   newTuit.stats= {
     "comments": 0,
     "retuits": 0,
-    "likes": 0
+    "likes": 0,
+    "dislikes": 0
   }
  tuits.push(newTuit);
  res.json(newTuit);
