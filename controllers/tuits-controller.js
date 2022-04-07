@@ -1,7 +1,18 @@
 import posts from "./tuits/tuits.js";
 let tuits = posts;
 
-// need to format this correctly
+const createTuit = (req, res) => {}
+const findAllTuits = (req, res) => {}
+const updateTuit = (req, res) => {}
+const deleteTuit = (req, res) => {}
+
+export default (app) => {
+ app.post('/api/tuits', createTuit);
+ app.get('/api/tuits', findAllTuits);
+ app.put('/api/tuits/:tid', updateTuit);
+ app.delete('/api/tuits/:tid', deleteTuit);
+}
+
 const createTuit = (req, res) => {
  const newTuit = req.body;
  newTuit.postedBy= {
@@ -18,13 +29,6 @@ const createTuit = (req, res) => {
  res.json(newTuit);
 }
 
-const updateTuit = (req, res) => {
- const tuitdIdToUpdate = req.params.tid;
- const updatedTuit = req.body;
- tuits = tuits.map(t => t._id === tuitdIdToUpdate ? updatedTuit : t);
- res.sendStatus(200);
-}
-
 const findAllTuits = (req, res) =>
  res.json(tuits);
 const updateTuit = (req, res) => {}
@@ -35,10 +39,9 @@ const deleteTuit = (req, res) => {
  res.sendStatus(200);
 }
 
-export default (app) => {
- app.post('/api/tuits', createTuit);
- app.get('/api/tuits', findAllTuits);
- app.put('/api/tuits/:tid', updateTuit);
- app.delete('/api/tuits/:tid', deleteTuit);
+const updateTuit = (req, res) => {
+ const tuitdIdToUpdate = req.params.tid;
+ const updatedTuit = req.body;
+ tuits = tuits.map(t => t._id === tuitdIdToUpdate ? updatedTuit : t);
+ res.sendStatus(200);
 }
-
