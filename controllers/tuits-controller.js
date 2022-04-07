@@ -1,11 +1,11 @@
 import posts from "./tuits/tuits.js";
 let tuits = posts;
 
-const updateTuit = (req, res) => {
- const tuitdIdToUpdate = req.params.tid;
- const updatedTuit = req.body;
- tuits = tuits.map(t => t._id === tuitdIdToUpdate ? updatedTuit : t);
- res.sendStatus(200);
+const tuitsController = (app) => {
+ app.post('/api/tuits', createTuit);
+ app.get('/api/tuits', findAllTuits);
+ app.put('/api/tuits/:tid', updateTuit);
+ app.delete('/api/tuits/:tid', deleteTuit);
 }
 
 // need to format this correctly
@@ -27,7 +27,6 @@ const createTuit = (req, res) => {
 
 const findAllTuits = (req, res) =>
  res.json(tuits);
-const updateTuit = (req, res) => {}
 
 const deleteTuit = (req, res) => {
  const tuitdIdToDelete = req.params.tid;
@@ -35,9 +34,11 @@ const deleteTuit = (req, res) => {
  res.sendStatus(200);
 }
 
-export default (app) => {
- app.post('/api/tuits', createTuit);
- app.get('/api/tuits', findAllTuits);
- app.put('/api/tuits/:tid', updateTuit);
- app.delete('/api/tuits/:tid', deleteTuit);
+const updateTuit = (req, res) => {
+ const tuitdIdToUpdate = req.params.tid;
+ const updatedTuit = req.body;
+ tuits = tuits.map(t => t._id === tuitdIdToUpdate ? updatedTuit : t);
+ res.sendStatus(200);
 }
+
+export default tuitsController;

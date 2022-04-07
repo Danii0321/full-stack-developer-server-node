@@ -19,7 +19,6 @@ const updateUser = (req, res) => {
  res.sendStatus(200);
 }
 
-
 const deleteUser = (req, res) => {
  const userId = req.params['uid'];
  users = users.filter(usr =>
@@ -47,6 +46,5 @@ const findAllUsers = (req, res) => {
  }
  res.json(users);
 }
-
 
 export default userController;
