@@ -1,36 +1,52 @@
-import posts from "./tuits/tuits.js";
-let tuits = posts;
+import people from './users/users.js';
+let users = people;
 
-// need to format this correctly
-const createTuit = (req, res) => {
- const newTuit = req.body;
- newTuit.postedBy= {
-                                            "username": "Me"
-                                        };
- newTuit._id = (new Date()).getTime()+'';
- newTuit.likes = 0;
-  newTuit.stats= {
-                             "comments": 0,
-                             "retuits": 0,
-                             "likes": 0
-                         }
- tuits.push(newTuit);
- res.json(newTuit);
+const userController = (app) => {
+ app.get('/api/users', findAllUsers);
+ app.get('/api/users/:uid', findUserById);
+ app.post('/api/users', createUser);
+ app.delete('/api/users/:uid', deleteUser);
+  app.put('/api/users/:uid', updateUser);
 }
 
-const findAllTuits = (req, res) =>
- res.json(tuits);
-const updateTuit = (req, res) => {}
-
-const deleteTuit = (req, res) => {
- const tuitdIdToDelete = req.params.tid;
- tuits = tuits.filter(t => t._id !== tuitdIdToDelete);
+const updateUser = (req, res) => {
+ const userId = req.params['uid'];
+ const updatedUser = req.body;
+ users = users.map(usr =>
+   usr._id === userId ?
+   updatedUser :
+   usr);
  res.sendStatus(200);
 }
 
-export default (app) => {
- app.post('/api/tuits', createTuit);
- app.get('/api/tuits', findAllTuits);
- app.put('/api/tuits/:tid', updateTuit);
- app.delete('/api/tuits/:tid', deleteTuit);
+
+const deleteUser = (req, res) => {
+ const userId = req.params['uid'];
+ users = users.filter(usr =>
+   usr._id !== userId);
+ res.sendStatus(200);
 }
+
+const createUser = (req, res) => {
+ const newUser = req.body;
+ newUser._id = (new Date()).getTime() + '';
+ users.push(newUser);
+ res.json(newUser);
+}
+
+const findUserById = (req, res) => {
+ const userId = req.params.uid;
+ const user = users.find(u => u._id === userId);
+ res.json(user);}
+
+const findAllUsers = (req, res) => {
+ const type = req.query.type;
+ if(type) {
+   res.json(findUsersByType(type));
+   return;
+ }
+ res.json(users);
+}
+
+
+export default userController;
