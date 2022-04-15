@@ -15,8 +15,8 @@ const schema = mongoose.Schema({
     video: String,
     image: String
   },
-  logo-image: String,
-  avatar-image: String,
+  "logo-image": String,
+  "avatar-image": String,
   stats: {
     comments: Number,
     retuits: Number,
