@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 const schema = mongoose.Schema({
+  "_id": String,
   topic: String,
   postedBy: {
     username: String

@@ -14,6 +14,18 @@ const findAllTuits = async (req, res) => {
 
 const createTuit = async (req, res) => {
   const newTuit = req.body;
+newTuit.postedBy= {
+    "username": "Me"
+ };
+ newTuit._id = (new Date()).getTime()+'';
+ newTuit.likes = 0;
+  newTuit.stats= {
+    "comments": 0,
+    "retuits": 0,
+    "likes": 0,
+    "dislikes": 0
+  }
+
   const insertedTuit = await tuitsDao.createTuit(newTuit);
   res.json(insertedTuit);
 }
@@ -24,12 +36,11 @@ const deleteTuit = async (req, res) => {
   res.send(status);
 }
 
-const updateTuit = (req, res) => {
+const updateTuit = async (req, res) => {
+console.log(req.params.tid);
   const tuitdIdToUpdate = req.params.tid;
   const updatedTuit = req.body;
-  const status = async (dispatch) => {
-    await tuitsDao.updateTuit(tuitdIdToUpdate, updatedTuit);
-    };
+  const status = await tuitsDao.updateTuit(tuitdIdToUpdate, updatedTuit);
   res.send(status);
 }
 
